@@ -1,0 +1,53 @@
+﻿@model List<DAL.Entities.Auto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().VinCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().TechPass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Owner)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VinCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechPass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AutoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AutoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AutoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

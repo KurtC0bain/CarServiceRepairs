@@ -1,15 +1,14 @@
 ﻿using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.EF
 {
     public class CarServiceDbContext : DbContext
     {
+        public CarServiceDbContext()
+        {
+
+        }
         public CarServiceDbContext(DbContextOptions<CarServiceDbContext> dbContextOptions) : base(dbContextOptions)
         {
 
@@ -27,5 +26,9 @@ namespace DAL.EF
             builder.Entity<DetailOrder>()
             .HasKey(a => new { a.DetailId, a.OrderId});
         }
+/*        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            options.UseSqlServer("Server=;Database=KnowledgeAccountingSystemDB;Trusted_Connection=True");
+        }*/
     }
 }
